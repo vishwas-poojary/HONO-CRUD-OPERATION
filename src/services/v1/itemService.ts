@@ -38,6 +38,26 @@ function seedItems() {
       status: ITEM_STATUS.ACTIVE,
       tags: ["logitech", "mouse", "wireless"],
     },
+    {
+      id: "item-104",
+      name: "Logitech MX Master 3S",
+      description: "Quiet wireless performance mouse for Mac & Windows",
+      price: 99.99,
+      quantity: 50,
+      category: ITEM_CATEGORY.ELECTRONICS,
+      status: ITEM_STATUS.ACTIVE,
+      tags: ["logitech", "mouse", "wireless"],
+    },
+    {
+      id: "item-105",
+      name: "Logitech MX Master 3S",
+      description: "Quiet wireless performance mouse for Mac & Windows",
+      price: 99.99,
+      quantity: 50,
+      category: ITEM_CATEGORY.ELECTRONICS,
+      status: ITEM_STATUS.ACTIVE,
+      tags: ["logitech", "mouse", "wireless"],
+    },
   ];
 
   sampleItems.forEach(item => {
