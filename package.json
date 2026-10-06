@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "@hono/node-server": "^1.13.8",
+    "@scalar/hono-api-reference": "^0.12.10",
     "dotenv": "^16.4.7",
     "hono": "^4.7.2",
     "pino": "^9.6.0",

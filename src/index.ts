@@ -21,6 +21,9 @@ app.use("*", entryPoint);
 // Attach exitPoint (headers: X-Transaction-Id, X-Response-Time, X-Environment, logging)
 app.use("*", exitPoint);
 
+import { apiReference } from "@scalar/hono-api-reference";
+import { openApiSpec } from "./openapi/spec.js";
+
 // Root route
 app.get("/", c => {
   return sendResponse(c, {
@@ -30,11 +33,38 @@ app.get("/", c => {
     data: {
       service: config.SERVICE_NAME,
       environment: config.ENVIRONMENT,
-      documentation: "/v1/items",
+      documentation: "/scalar",
+      endpoints: "/v1/items",
     },
     toastMessage: "Welcome to Hono CRUD Service",
   });
 });
+
+// OpenAPI Spec Endpoint
+app.get("/openapi.json", c => c.json(openApiSpec));
+
+// Interactive Scalar API Reference & Testing UI
+app.get(
+  "/scalar",
+  apiReference({
+    theme: "purple",
+    pageTitle: "Hono API Reference - Scalar",
+    spec: {
+      content: openApiSpec,
+    },
+  }),
+);
+
+app.get(
+  "/reference",
+  apiReference({
+    theme: "purple",
+    pageTitle: "Hono API Reference - Scalar",
+    spec: {
+      content: openApiSpec,
+    },
+  }),
+);
 
 // Register API Routes
 registerRoutes(app);

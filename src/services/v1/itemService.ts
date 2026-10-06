@@ -5,10 +5,11 @@ import { ITEM_CATEGORY, ITEM_STATUS } from "../../utils/v1/constants.js";
 // In-memory data store with thread-safe persistence in process
 const itemsStore = new Map<string, Item>();
 
-// Seed initial items for instant testing
+// Seed initial items with predictable IDs for reliable testing
 function seedItems() {
-  const sampleItems: CreateItemDTO[] = [
+  const sampleItems: (CreateItemDTO & { id: string })[] = [
     {
+      id: "item-101",
       name: "MacBook Pro 16",
       description: "Apple M3 Max, 36GB RAM, 1TB SSD",
       price: 2499.99,
@@ -18,6 +19,7 @@ function seedItems() {
       tags: ["apple", "laptop", "m3"],
     },
     {
+      id: "item-102",
       name: "Ergonomic Office Chair",
       description: "Mesh high-back desk chair with lumbar support",
       price: 299.5,
@@ -27,6 +29,7 @@ function seedItems() {
       tags: ["furniture", "chair", "ergonomic"],
     },
     {
+      id: "item-103",
       name: "Logitech MX Master 3S",
       description: "Quiet wireless performance mouse for Mac & Windows",
       price: 99.99,
@@ -38,11 +41,9 @@ function seedItems() {
   ];
 
   sampleItems.forEach(item => {
-    const id = generateId();
     const now = new Date().toISOString();
-    itemsStore.set(id, {
+    itemsStore.set(item.id, {
       ...item,
-      id,
       status: item.status || ITEM_STATUS.ACTIVE,
       isDeleted: false,
       createdAt: now,
