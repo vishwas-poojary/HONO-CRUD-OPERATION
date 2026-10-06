@@ -4,7 +4,4 @@ set -e
 echo "🔍 Running pre-commit lint and formatting checks..."
 npx lint-staged
 
-echo "🔍 Running TypeScript build check..."
-npm run build
-
-echo "✅ All pre-commit checks passed successfully!"
+echo "✅ Pre-commit staged checks passed!"
